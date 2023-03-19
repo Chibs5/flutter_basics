@@ -1,4 +1,6 @@
 # Basics 
 
-MaterialApp & Scaffold widgets are the two most important widget to build an app.
-they are the skeleton of an application.
+## MaterialApp & Scaffold
+These two are the most important widgets to build an application.
+
+They are the skeleton of an application.
