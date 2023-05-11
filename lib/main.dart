@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Click';
   int currentIndex = 0;
+  bool _isClicked  = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,37 +25,48 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: currentIndex == 0 ? Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.white, //This changes the color of the text.
-                    primary: Colors.orange,  //This changes the color of the Button
+          child: currentIndex == 0
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          onPrimary: Colors
+                              .white, //This changes the color of the text.
+                          primary: Colors
+                              .orange, //This changes the color of the Button
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            buttonName = 'Clicked';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            buttonName = 'Clicked';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    setState(() {
-                      buttonName = 'Clicked';
-                    });
-                  },
-                  child: Text(buttonName),
+                )
+              : GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _isClicked  = !_isClicked;
+                  });
+                },
+                  child: _isClicked ? Image.asset('images/MHA.JPG') : Image.asset('images/naruto.png'),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      buttonName = 'Clicked';
-                    });
-                  },
-                  child: Text(buttonName),
-                ),
-              ],
-            ),
-          ) : Image.asset('images/MHA.JPG'),
         ),
         //Bottom Navigation Bar
         bottomNavigationBar: BottomNavigationBar(
@@ -69,7 +81,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
           currentIndex: currentIndex,
-          onTap: (int index){
+          onTap: (int index) {
             setState(() {
               currentIndex = index;
             });
@@ -79,6 +91,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 /*
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
