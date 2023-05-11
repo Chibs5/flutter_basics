@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'next_page.dart';
+import 'next_page/next_page.dart';
 
 void main() {
   runApp(MyApp());
