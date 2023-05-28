@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'next_page/next_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,9 +36,8 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          onPrimary: Colors
-                              .white, //This changes the color of the text.
-                          primary: Colors
+                          foregroundColor: Colors
+                              .white, backgroundColor: Colors
                               .orange, //This changes the color of the Button
                         ),
                         onPressed: () {
